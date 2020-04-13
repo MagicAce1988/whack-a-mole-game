@@ -23,7 +23,7 @@ const randomSquare = () => {
     }, 500);
     return;
   }
-  let randomPosition = squares[Math.floor(Math.random() * 9)];
+  let randomPosition = squares[Math.floor(Math.random() * 16)];
   randomPosition.classList.add("mole");
   hitPosition = randomPosition.id;
 };
@@ -40,7 +40,7 @@ squares.forEach((id) => {
 
 const moveMole = () => {
   let timerId = null;
-  timerId = setInterval(randomSquare, 500);
+  timerId = setInterval(randomSquare, 1000);
 };
 
 moveMole();
