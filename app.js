@@ -15,8 +15,10 @@ const randomSquare = () => {
   });
   if (timeLeft.textContent === "0") {
     hitPosition = null;
-    finalScore.textContent = `GAME OVER. Your final score is ${result}`;
-    finalMole.classList.add("mole");
+    setTimeout(() => {
+      finalScore.textContent = `GAME OVER. Your final score is ${result}`;
+      finalMole.classList.add("mole");
+    }, 500);
     return;
   }
   let randomPosition = squares[Math.floor(Math.random() * 9)];
