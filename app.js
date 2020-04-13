@@ -5,10 +5,15 @@ let score = document.querySelector("#score");
 let finalScore = document.querySelector(".final-score");
 const finalMole = document.querySelector(".finalMole");
 const grid = document.querySelector(".grid");
+const tryAgain = document.querySelector(".tryAgain");
+let rSqId, timerId, result, currentTime;
 
-let result = 0;
-let currentTime = timeLeft.textContent;
-score.textContent = result;
+tryAgain.addEventListener("click", () => {
+  finalMole.classList.remove("mole");
+  tryAgain.classList.remove("displayFlex");
+  grid.classList.remove("noDisplay");
+  runGame();
+});
 
 const randomSquare = () => {
   squares.forEach((className) => {
@@ -17,9 +22,11 @@ const randomSquare = () => {
   if (timeLeft.textContent === "0") {
     hitPosition = null;
     setTimeout(() => {
+      clearInterval(rSqId);
       grid.classList.add("noDisplay");
-      finalScore.textContent = `GAME OVER. Your final score is ${result}`;
+      finalScore.textContent = `GAME OVER. Your final score is ${result}.`;
       finalMole.classList.add("mole");
+      tryAgain.classList.add("displayFlex");
     }, 500);
     return;
   }
@@ -39,11 +46,8 @@ squares.forEach((id) => {
 });
 
 const moveMole = () => {
-  let timerId = null;
-  timerId = setInterval(randomSquare, 1000);
+  rSqId = setInterval(randomSquare, 1000);
 };
-
-moveMole();
 
 const countDown = () => {
   currentTime--;
@@ -53,4 +57,20 @@ const countDown = () => {
   }
 };
 
-let timerId = setInterval(countDown, 1000);
+const defineVariables = () => {
+  currentTime = 60;
+  timeLeft.textContent = "60";
+  result = 0;
+  score.textContent = "0";
+  finalScore.textContent = "";
+};
+
+const runGame = () => {
+  defineVariables();
+
+  moveMole();
+
+  timerId = setInterval(countDown, 1000);
+};
+
+runGame();

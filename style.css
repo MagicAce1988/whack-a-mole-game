@@ -1,3 +1,10 @@
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -49,4 +56,21 @@ body {
 
 .noDisplay {
   display: none;
+}
+
+.tryAgain {
+  margin-top: 20px;
+  width: 150px;
+  height: 25px;
+  background-color: #000000;
+  color: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.displayFlex {
+  display: flex;
 }
