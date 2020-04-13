@@ -9,9 +9,6 @@ const tryAgain = document.querySelector(".tryAgain");
 let rSqId, timerId, result, currentTime;
 
 tryAgain.addEventListener("click", () => {
-  finalMole.classList.remove("mole");
-  tryAgain.classList.remove("displayFlex");
-  grid.classList.remove("noDisplay");
   runGame();
 });
 
@@ -66,6 +63,10 @@ const defineVariables = () => {
 };
 
 const runGame = () => {
+  finalMole.classList.remove("mole");
+  tryAgain.classList.remove("displayFlex");
+  grid.classList.remove("noDisplay");
+
   defineVariables();
 
   moveMole();
