@@ -4,6 +4,7 @@ const timeLeft = document.querySelector("#time-left");
 let score = document.querySelector("#score");
 let finalScore = document.querySelector(".final-score");
 const finalMole = document.querySelector(".finalMole");
+const grid = document.querySelector(".grid");
 
 let result = 0;
 let currentTime = timeLeft.textContent;
@@ -16,6 +17,7 @@ const randomSquare = () => {
   if (timeLeft.textContent === "0") {
     hitPosition = null;
     setTimeout(() => {
+      grid.classList.add("noDisplay");
       finalScore.textContent = `GAME OVER. Your final score is ${result}`;
       finalMole.classList.add("mole");
     }, 500);
